@@ -44,7 +44,7 @@ app.use(
 app.get('/', async(req, res) => {
   const songs = await Song.findAll()
 
-  res.json(songs)
+  res.json("I made a new feature")
 })
 
 app.use(routes); // Connect all the routes
