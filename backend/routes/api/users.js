@@ -43,4 +43,8 @@ router.post(
   }
 );
 
+router.get('/current-user', requireAuth, async (req, res) => {
+  return res.json("I work")
+})
+
 module.exports = router;
