@@ -41,7 +41,9 @@ app.use(
     }
   })
 );
-
+app.get('/', async(req, res) => {
+  res.json("success")
+})
 app.use(routes); // Connect all the routes
 
 // Catch unhandled requests and forward to error handler.
