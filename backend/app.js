@@ -6,7 +6,7 @@ const csurf = require("csurf");
 const helmet = require("helmet");
 const cookieParser = require("cookie-parser");
 const { ValidationError } = require("sequelize");
-
+const {Song} = require('./db/models')
 const routes = require("./routes");
 const { environment } = require("./config");
 const isProduction = environment === "production";
@@ -26,8 +26,8 @@ if (!isProduction) {
 
 // helmet helps set a variety of headers to better secure your app
 app.use(
-  helmet.crossOriginResourcePolicy({ 
-    policy: "cross-origin" 
+  helmet.crossOriginResourcePolicy({
+    policy: "cross-origin"
   })
 );
 
