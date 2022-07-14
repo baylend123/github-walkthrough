@@ -41,11 +41,11 @@ app.use(
     }
   })
 );
-app.get('/', async(req, res) => {
-  const songs = await Song.findAll()
+// app.get('/', async(req, res) => {
+//   const songs = await Song.findAll()
 
-  res.json("I made a new feature")
-})
+//   res.json(songs)
+// })
 
 app.use(routes); // Connect all the routes
 
