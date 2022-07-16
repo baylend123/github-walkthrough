@@ -41,19 +41,12 @@ app.use(
     }
   })
 );
-// app.get('/', async(req, res) => {
-//   const user = await User.findByPk(1, {
-//     include : {
-//       model : Song,
-//       as : 'Artist'
-//     }
-//   })
+app.get('/', async(req, res) => {
+  const user = await User.findByPk(1)
+  // const user = await Sequelize.literal('select * from users where id=1; ')
 
-//   const song = await Song.findByPk(1)
-//   // const user = await Sequelize.literal('select * from users where id=1; ')
-
-//   res.json(user)
-// })
+  res.json(user)
+})
 
 app.use(routes); // Connect all the routes
 
