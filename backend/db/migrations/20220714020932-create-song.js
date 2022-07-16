@@ -13,7 +13,6 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: {
           model: 'Users',
-          key: 'id'
         }
       },
       // this si gong to be set to null because I have not created the model yet

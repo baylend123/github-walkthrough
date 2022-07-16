@@ -1,6 +1,7 @@
 'use strict';
 const { Model, Validator } = require('sequelize');
 const bcrypt = require("bcryptjs");
+require('dotenv').config()
 
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
@@ -11,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     validatePassword(password) {
       return bcrypt.compareSync(password, this.hashedPassword.toString());
     }
+    
     static getCurrentUserById(id) {
       return User.scope("currentUser").findByPk(id);
     }
@@ -38,10 +40,12 @@ module.exports = (sequelize, DataTypes) => {
       return await User.scope('currentUser').findByPk(user.id);
     }
     static associate(models) {
-      User.hasMany(models.Song, {foreignKey : 'userId'})
+      // User.hasMany(models.Song, { foreignKey : 'userId'})
+      // User.hasMany(models.Song, {as : 'Artist' })
+      // User.hasMany(models.Song, {as : 'Anything' })
     }
   };
-  
+
   User.init(
     {
       username: {

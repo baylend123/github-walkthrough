@@ -6,7 +6,7 @@ const csurf = require("csurf");
 const helmet = require("helmet");
 const cookieParser = require("cookie-parser");
 const { ValidationError } = require("sequelize");
-const {Song} = require('./db/models')
+const {Song, User, Sequelize} = require('./db/models')
 const routes = require("./routes");
 const { environment } = require("./config");
 const isProduction = environment === "production";
@@ -42,9 +42,17 @@ app.use(
   })
 );
 // app.get('/', async(req, res) => {
-//   const songs = await Song.findAll()
+//   const user = await User.findByPk(1, {
+//     include : {
+//       model : Song,
+//       as : 'Artist'
+//     }
+//   })
 
-//   res.json(songs)
+//   const song = await Song.findByPk(1)
+//   // const user = await Sequelize.literal('select * from users where id=1; ')
+
+//   res.json(user)
 // })
 
 app.use(routes); // Connect all the routes
